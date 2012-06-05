@@ -1,18 +1,28 @@
 num = ARGV.first.to_i
 
+def single(num)
+  count = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+  return count[num]
+end
+
 def english_numeral(num)
   len = ARGV.first.length
   case len
   when 1
-    count = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-    numeral = count[num]
+    numeral = single(num)
   when 2
-    if num >= 10 && num < 20 then
+    if num < 20 then
       num = num - 10
       count = ["ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
       numeral = count[num]
-    elsif num >= 20 then
-      numeral = "overTwenty"
+    elsif num < 30 then
+      num = num.to_s[len-1]
+      numeral = "Twenty" + " " + single(num.to_i)
+    elsif num < 40 then
+      num = num.to_s[len-1]
+      numeral = "Thirty" + " " + single(num.to_i)
+    else
+      numeral = "over"
     end
   end
   return numeral
@@ -24,3 +34,4 @@ else
  numeral = english_numeral(num)
 end
 puts numeral
+
