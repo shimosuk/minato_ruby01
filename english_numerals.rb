@@ -1,8 +1,22 @@
 num = ARGV.first.to_i
 
+def three(num)
+  tnum = num.to_s[0]
+  num = num.to_s[1..2]
+  "#{single(tnum.to_i)} hundread #{double(num)}"
+end
+
 def double(num)
-  count = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-  count[num - 2]
+  if num.to_i < 20
+    num -= 10
+    count = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
+    count[num]
+  else
+    snum = num.to_s[1].to_i
+    dnum = num.to_s[0].to_i
+    count = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+    "#{count[dnum - 2]} #{single(snum)}"
+  end
 end
 
 def single(num)
@@ -16,16 +30,10 @@ def english_numeral(num)
   when 1
     single(num)
   when 2
-    if num < 20
-      num -= 10
-      count = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
-      count[num]
-    else
-      snum = num.to_s[len - 1]
-      dnum = num.to_s[0]
-      "#{double(dnum.to_i)} #{single(snum.to_i)}"
-    end
+    double(num)
   when 3
+    three(num)
+  when 4
     "over"
   end
 end
