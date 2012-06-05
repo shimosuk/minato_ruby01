@@ -1,5 +1,10 @@
 num = ARGV.first.to_i
 
+def double(num)
+  count = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+  return count[num - 1]
+end
+
 def single(num)
   count = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
   return count[num]
@@ -15,15 +20,13 @@ def english_numeral(num)
       num = num - 10
       count = ["ten", "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"]
       numeral = count[num]
-    elsif num < 30 then
-      num = num.to_s[len-1]
-      numeral = "Twenty" + " " + single(num.to_i)
-    elsif num < 40 then
-      num = num.to_s[len-1]
-      numeral = "Thirty" + " " + single(num.to_i)
     else
-      numeral = "over"
+      snum = num.to_s[len-1]
+      dnum = num.to_s[0]
+      numeral = double(dnum.to_i) + " " + single(snum.to_i)
     end
+  when 3
+    numeral = "over"
   end
   return numeral
 end
