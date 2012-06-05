@@ -14,26 +14,26 @@ def english_numeral(num)
   len = ARGV.first.length
   case len
   when 1
-    numeral = single(num)
+    single(num)
   when 2
     if num < 20
       num -= 10
       count = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
-      numeral = count[num]
+      count[num]
     else
       snum = num.to_s[len - 1]
       dnum = num.to_s[0]
-      numeral = "#{double(dnum.to_i)} #{single(snum.to_i)}"
+      "#{double(dnum.to_i)} #{single(snum.to_i)}"
     end
   when 3
-    numeral = "over"
+    "over"
   end
 end
 
 if num.zero?
- numeral = "zero"
+  numeral = "zero"
 else
- numeral = english_numeral(num)
+  numeral = english_numeral(num)
 end
 puts numeral
 
