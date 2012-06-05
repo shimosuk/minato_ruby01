@@ -25,8 +25,8 @@ def single(num)
 end
 
 def english_numeral(num)
-  len = ARGV.first.length
-  case len
+  digit = ARGV.first.length
+  case digit
   when 1
     single(num)
   when 2
