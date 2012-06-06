@@ -30,7 +30,7 @@ def single(num)
   count[num.to_i]
 end
 
-def english_numeral(num)
+def check_digit(num)
   digit = num.length
   case digit
   when 1
@@ -46,10 +46,12 @@ def english_numeral(num)
   end
 end
 
-if num.to_i.zero?
-  numeral = "zero"
-else
-  numeral = english_numeral(num)
+def english_numeral(num)
+  if num.to_i.zero?
+    "zero"
+  else
+    check_digit(num)
+  end
 end
-puts numeral
+puts english_numeral(num)
 
