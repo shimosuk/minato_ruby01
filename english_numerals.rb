@@ -1,6 +1,6 @@
 num = ARGV.first.to_i
 
-def three(num)
+def triple(num)
   tnum = num.to_s[0]
   num = num.to_s[1..2]
   "#{single(tnum.to_i)} hundread #{double(num)}"
@@ -32,7 +32,7 @@ def english_numeral(num)
   when 2
     double(num)
   when 3
-    three(num)
+    triple(num)
   when 4
     "over"
   end
