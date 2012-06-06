@@ -1,25 +1,25 @@
-num = ARGV.first.to_i
+num = ARGV.first
 
 def quadruple(num)
-  qnum = num.to_s[0]
-  tnum = num.to_s[1..3]
-  "#{single(qnum.to_i)} thousand #{triple(tnum.to_i)}"
+  qnum = num[0]
+  tnum = num[1..3]
+  "#{single(qnum)} thousand #{triple(tnum)}"
 end
 
 def triple(num)
-  tnum = num.to_s[0]
-  num = num.to_s[1..2]
+  tnum = num[0]
+  num = num[1..2]
   "#{single(tnum.to_i)} hundread #{double(num)}"
 end
 
 def double(num)
   if num.to_i < 20
-    num -= 10
+    n = num.to_i - 10
     count = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
-    count[num]
+    count[n]
   else
-    snum = num.to_s[1].to_i
-    dnum = num.to_s[0].to_i
+    snum = num[1]
+    dnum = num[0].to_i
     count = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
     "#{count[dnum - 2]} #{single(snum)}"
   end
@@ -27,11 +27,11 @@ end
 
 def single(num)
   count = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-  count[num]
+  count[num.to_i]
 end
 
 def english_numeral(num)
-  digit = ARGV.first.length
+  digit = num.length
   case digit
   when 1
     single(num)
@@ -46,7 +46,7 @@ def english_numeral(num)
   end
 end
 
-if num.zero?
+if num.to_i.zero?
   numeral = "zero"
 else
   numeral = english_numeral(num)
