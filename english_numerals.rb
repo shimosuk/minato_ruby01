@@ -1,26 +1,25 @@
 num = ARGV.first
 
-def exclude_zero(num)
-  #TODO 01 00 の0を除外する処理を書く。ただし、1ケタは必ず残す
-  check_digit(num)
-end
-
-#TODO 1011や1001,1000に未対応
 def quadruple_digit(num)
   qnum = num[0]
   tnum = num[1..3]
-  "#{single_digit(qnum)} thousand #{triple_digit(tnum)}"# triple_digitをexclude_zeroに
+  "#{single_digit(qnum)} thousand #{triple_digit(tnum)}"
 end
 
-#TODO 100や101に未対応
 def triple_digit(num)
   tnum = num[0]
   num = num[1..2]
-  "#{single_digit(tnum.to_i)} hundread #{double_digit(num)}"# 上記同様
+  if tnum == "0"
+    "#{double_digit(num)}"
+  else
+    "#{single_digit(tnum.to_i)} hundread #{double_digit(num)}"
+  end
 end
 
 def double_digit(num)
-  if num.to_i < 20
+  if num[0]=="0"
+    single_digit(num[1])
+  elsif num.to_i < 20
     n = num.to_i - 10
     count = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
     count[n]
