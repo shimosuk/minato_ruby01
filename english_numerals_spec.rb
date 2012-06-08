@@ -20,6 +20,18 @@ describe "test_double_digit" do
   specify{double_digit("28").should == "twenty eight"}
 end
 
+describe "test_triple_digit" do
+  specify{triple_digit("110").should == "one hundread ten"}
+  specify{triple_digit("555").should == "five hundread fifty five"}
+  specify{triple_digit("999").should == "nine hundread ninety nine"}
+end
+
+describe "test_quardruple_digit" do
+  specify{quadruple_digit("1110").should == "one thousand one hundread ten"}
+  specify{quadruple_digit("5555").should == "five thousand five hundread fifty five"}
+  specify{quadruple_digit("9999").should == "nine thousand nine hundread ninety nine"}
+end
+
 describe "test_check_digit" do 
   specify{check_digit("1").should == single_digit("1")}
   specify{check_digit("12").should == double_digit("12")}
