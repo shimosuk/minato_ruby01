@@ -1,19 +1,29 @@
 num = ARGV.first
 
-def quadruple(num)
+def quadruple_digit(num)
   qnum = num[0]
   tnum = num[1..3]
-  "#{single(qnum)} thousand #{triple(tnum)}"
+  if qnum == "0"
+    "#{triple_digit(tnum)}"
+  else
+    "#{single_digit(qnum)} thousand #{triple_digit(tnum)}"
+  end
 end
 
-def triple(num)
+def triple_digit(num)
   tnum = num[0]
   num = num[1..2]
-  "#{single(tnum.to_i)} hundread #{double(num)}"
+  if tnum == "0"
+    "#{double_digit(num)}"
+  else
+    "#{single_digit(tnum.to_i)} hundread #{double_digit(num)}"
+  end
 end
 
-def double(num)
-  if num.to_i < 20
+def double_digit(num)
+  if num[0]=="0"
+    single_digit(num[1])
+  elsif num.to_i < 20
     n = num.to_i - 10
     count = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"]
     count[n]
@@ -21,11 +31,11 @@ def double(num)
     snum = num[1]
     dnum = num[0].to_i
     count = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-    "#{count[dnum - 2]} #{single(snum)}"
+    "#{count[dnum - 2]} #{single_digit(snum)}"
   end
 end
 
-def single(num)
+def single_digit(num)
   count = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
   count[num.to_i]
 end
@@ -34,13 +44,13 @@ def check_digit(num)
   digit = num.length
   case digit
   when 1
-    single(num)
+    single_digit(num)
   when 2
-    double(num)
+    double_digit(num)
   when 3
-    triple(num)
+    triple_digit(num)
   when 4
-    quadruple(num)
+    quadruple_digit(num)
   when 5
     "over"
   end
