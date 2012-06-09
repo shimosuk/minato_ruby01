@@ -3,7 +3,11 @@ num = ARGV.first
 def quadruple_digit(num)
   qnum = num[0]
   tnum = num[1..3]
-  "#{single_digit(qnum)} thousand #{triple_digit(tnum)}"
+  if qnum == "0"
+    "#{triple_digit(tnum)}"
+  else
+    "#{single_digit(qnum)} thousand #{triple_digit(tnum)}"
+  end
 end
 
 def triple_digit(num)

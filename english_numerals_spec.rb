@@ -32,6 +32,7 @@ describe "test_triple_digit" do
 end
 
 describe "test_quardruple_digit" do
+  specify{quadruple_digit("0001").should == "one"}
   specify{quadruple_digit("1001").should == "one thousand one"}
   specify{quadruple_digit("1010").should == "one thousand ten"}
   specify{quadruple_digit("1110").should == "one thousand one hundread ten"}
