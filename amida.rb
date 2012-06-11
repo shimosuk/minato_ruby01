@@ -1,0 +1,3 @@
+def stalk(menber)
+  "|"
+end
